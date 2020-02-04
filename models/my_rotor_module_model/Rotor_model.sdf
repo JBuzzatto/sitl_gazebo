@@ -7,14 +7,14 @@
       <pose>0 0 0 0 0 0</pose>
       <inertial>
         <pose>0 0 0 0 0 0</pose>
-        <mass>0.5</mass>
+        <mass>0.3</mass>
         <inertia>
-          <ixx>0.197563</ixx>
+          <ixx>0.000166704</ixx>
           <ixy>0</ixy>
           <ixz>0</ixz>
-          <iyy>0.1458929</iyy>
+          <iyy>0.000166704</iyy>
           <iyz>0</iyz>
-          <izz>0.1477</izz>
+          <izz>0.000166704</izz>
         </inertia>
       </inertial>
       <collision name='base_link_collision'>
@@ -93,7 +93,7 @@
       <pose>0 0 0.07 0 0 0</pose>
       <inertial>
         <pose>0 0 0 0 0 0</pose>
-        <mass>0.005</mass>
+        <mass>0.15</mass>
         <inertia>
           <ixx>0.000166704</ixx>
           <ixy>0</ixy>
@@ -491,50 +491,33 @@
       <use_tcp>true</use_tcp>
       <motorSpeedCommandPubTopic>/gazebo/command/motor_speed</motorSpeedCommandPubTopic>
       <control_channels>
-        <channel name="rotor0">
+        <channel name="rotor_top">
           <input_index>0</input_index>
           <input_offset>0</input_offset>
           <input_scaling>1500</input_scaling>
           <zero_position_disarmed>0</zero_position_disarmed>
           <zero_position_armed>0</zero_position_armed>
           <joint_control_type>velocity</joint_control_type>
-          <joint_name>rotor_0_joint</joint_name>
+          <joint_name>rotor_top_joint</joint_name>
         </channel>
-        <channel name="rotor1">
+        <channel name="rotor_bottom">
           <input_index>1</input_index>
           <input_offset>0</input_offset>
           <input_scaling>1500</input_scaling>
           <zero_position_disarmed>0</zero_position_disarmed>
           <zero_position_armed>0</zero_position_armed>
           <joint_control_type>velocity</joint_control_type>
-          <joint_name>rotor_1_joint</joint_name>
+          <joint_name>rotor_bottom_joint</joint_name>
         </channel>
-        <channel name="rotor2">
-          <input_index>2</input_index>
-          <input_offset>0</input_offset>
-          <input_scaling>1500</input_scaling>
-          <zero_position_disarmed>0</zero_position_disarmed>
-          <zero_position_armed>0</zero_position_armed>
-          <joint_control_type>velocity</joint_control_type>
-          <joint_name>rotor_2_joint</joint_name>
-        </channel>
-        <channel name="rotor3">
-          <input_index>3</input_index>
-          <input_offset>0</input_offset>
-          <input_scaling>1500</input_scaling>
-          <zero_position_disarmed>0</zero_position_disarmed>
-          <zero_position_armed>0</zero_position_armed>
-          <joint_control_type>velocity</joint_control_type>
-          <joint_name>rotor_3_joint</joint_name>
-        </channel>
-        <channel name="motor0_tilt">
+        
+        <channel name="fork_motor">
           <input_index>4</input_index>
           <input_offset>0</input_offset>
           <input_scaling>1.5</input_scaling>
           <zero_position_disarmed>0</zero_position_disarmed>
           <zero_position_armed>0</zero_position_armed>
           <joint_control_type>position</joint_control_type>
-          <joint_name>motor_0_joint</joint_name>
+          <joint_name>fork_joint</joint_name>
            <joint_control_pid>
             <p>100</p>
             <i>0</i>
@@ -545,14 +528,14 @@
             <cmdMin>-2</cmdMin>
           </joint_control_pid>
         </channel>
-        <channel name="motor1_tilt">
+        <channel name="core_motor">
           <input_index>5</input_index>
           <input_offset>0</input_offset>
           <input_scaling>1.5</input_scaling>
           <zero_position_disarmed>0</zero_position_disarmed>
           <zero_position_armed>0</zero_position_armed>
           <joint_control_type>position</joint_control_type>
-          <joint_name>motor_1_joint</joint_name>
+          <joint_name>core_joint</joint_name>
            <joint_control_pid>
             <p>100</p>
             <i>0</i>
@@ -562,80 +545,8 @@
             <cmdMax>2</cmdMax>
             <cmdMin>-2</cmdMin>
           </joint_control_pid>
-        </channel>
-        <channel name="motor2_tilt">
-          <input_index>6</input_index>
-          <input_offset>0</input_offset>
-          <input_scaling>1.5</input_scaling>
-          <zero_position_disarmed>0</zero_position_disarmed>
-          <zero_position_armed>0</zero_position_armed>
-          <joint_control_type>position</joint_control_type>
-          <joint_name>motor_2_joint</joint_name>
-           <joint_control_pid>
-            <p>100</p>
-            <i>0</i>
-            <d>0</d>
-            <iMax>0.0</iMax>
-            <iMin>0.0</iMin>
-            <cmdMax>2</cmdMax>
-            <cmdMin>-2</cmdMin>
-          </joint_control_pid>
-        </channel>
-        <channel name="motor3_tilt">
-          <input_index>7</input_index>
-          <input_offset>0</input_offset>
-          <input_scaling>1.5</input_scaling>
-          <zero_position_disarmed>0</zero_position_disarmed>
-          <zero_position_armed>0</zero_position_armed>
-          <joint_control_type>position</joint_control_type>
-          <joint_name>motor_3_joint</joint_name>
-           <joint_control_pid>
-            <p>100</p>
-            <i>0</i>
-            <d>0</d>
-            <iMax>0.0</iMax>
-            <iMin>0.0</iMin>
-            <cmdMax>2</cmdMax>
-            <cmdMin>-2</cmdMin>
-          </joint_control_pid>
-        </channel>
-        <channel name="left_elevon">
-          <input_index>8</input_index>
-          <input_offset>0</input_offset>
-          <input_scaling>1</input_scaling>
-          <zero_position_disarmed>0</zero_position_disarmed>
-          <zero_position_armed>0</zero_position_armed>
-          <joint_control_type>position_kinematic</joint_control_type>
-          <joint_name>left_elevon_joint</joint_name>
-        </channel>
-        <channel name="right_elevon">
-          <input_index>9</input_index>
-          <input_offset>0</input_offset>
-          <input_scaling>1</input_scaling>
-          <zero_position_disarmed>0</zero_position_disarmed>
-          <zero_position_armed>0</zero_position_armed>
-          <joint_control_type>position_kinematic</joint_control_type>
-          <joint_name>right_elevon_joint</joint_name>
-        </channel>
-        <channel name="elevator">
-          <input_index>10</input_index>
-          <input_offset>0</input_offset>
-          <input_scaling>1</input_scaling>
-          <zero_position_disarmed>0</zero_position_disarmed>
-          <zero_position_armed>0</zero_position_armed>
-          <joint_control_type>position_kinematic</joint_control_type>
-          <joint_name>elevator_joint</joint_name>
         </channel>
       </control_channels>
-      <left_elevon_joint>
-        left_elevon_joint
-      </left_elevon_joint>
-      <right_elevon_joint>
-        right_elevon_joint
-      </right_elevon_joint>
-      <elevator_joint>
-        elevator_joint
-      </elevator_joint>
     </plugin>
 
     <static>0</static>
