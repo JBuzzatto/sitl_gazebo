@@ -832,6 +832,7 @@
         </ode>
       </physics>
     </joint>
+
     <plugin name="left_wing" filename="libLiftDragPlugin.so">
       <a0>0.05984281113</a0>
       <cla>4.752798721</cla>
