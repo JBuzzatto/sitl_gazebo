@@ -46,6 +46,22 @@ naming schematic as bellow:
 
   "
 
+*Additionally, you also have to create a .world file on:
+    Firmware/Tools/sitl_gazebo/worlds
+
+The file sould be named 'my_model.world' and contain the inclusion of your .sdf model file:
+"
+...
+...
+  <include>
+    <uri>model://my_model</uri>
+    <pose>1.01 0.98 0.83 0 0 1.14</pose>
+  </include>
+...
+...
+"
+
+
 ## 2 Regarding what to do to make your model to show up as a target for the sitl_gazebo build system.
 The command to build and run the simulation on sitl_gazebo with a specific model follow the patter bellow:
 
