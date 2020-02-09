@@ -1,0 +1,79 @@
+#####** This is a simple guide on how to insert a whole new model on gazebo sitl px4 framework **#####
+
+## 1 Regarding the model on gazebo
+The models on gazebo sitl are in 
+    Firmware/Tools/sitl_gazebo/models
+
+*On this folder each model has its own folder with at least two files on it. They probably must follow the 
+naming schematic as bellow:
+    - my_model/
+            - model.config
+            - my_model.sdf
+
+*The content of model.config file should follow the bellow:
+"
+<?xml version="1.0"?>
+<model>
+  <name>my_model</name>
+  <version>1.0</version>
+  <sdf version='1.4'>my_model.sdf</sdf>
+
+  <author>
+   <name>author_name</name>
+   <email>asdfas@asdas</email>
+  </author>
+
+  <description>
+    Model description
+  </description>
+</model>
+"
+
+*The content of the .sdf model can be very large, but bellow is what it should contain in terms of naming:
+"
+<sdf version='1.5'>
+
+  <model name='my_model'>
+
+  ...
+  ...
+
+  **There is also probably requirements concening the name of other objects inside the model, i.e., names of joints and links.
+    Those names may be more relevant when they are passed down to the structures on the *mavlink plugin*, that  makes the connection
+    between the .sdf model and the "inner model" on px4.
+
+    MUST add this once I figure it out** 
+
+  "
+
+## 2 Regarding what to do to make your model to show up as a target for the sitl_gazebo build system.
+The command to build and run the simulation on sitl_gazebo with a specific model follow the patter bellow:
+
+    $ make px4_sitl gazebo_my_model
+
+Where you replace 'my_model' with the name you declare on the model files on the privious step.
+
+*To make this work with your model as well, you must add your model name as a build target on the file:
+    /Firmware/platforms/posix/cmake/sitl_target.cmake
+
+  - The place where you add your model name starts on line 51 of the file .cmake:
+  "
+  ...
+  ...
+  # create targets for each viewer/model/debugger combination
+51  set(viewers none jmavsim gazebo)
+52  set(debuggers none ide gdb lldb ddd valgrind callgrind)
+53  set(models none shell
+54	  if750a iris iris_opt_flow iris_vision iris_rplidar iris_irlock iris_obs_avoid iris_rtps solo typhoon_h480
+55	  plane
+56	  standard_vtol tailsitter tiltrotor
+57	  hippocampus rover my_model)
+   ...
+   ...
+  "
+
+Source of this information:
+    https://discuss.px4.io/t/troubles-adding-new-model-for-simulation-in-gazebo/10949
+
+
+## 3 
