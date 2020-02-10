@@ -1,10 +1,10 @@
 #####** This is a simple guide on how to insert a whole new model on gazebo sitl px4 framework **#####
 
 ## 1 Regarding the model on gazebo
-The models on gazebo sitl are in 
+The models on gazebo sitl are in
     Firmware/Tools/sitl_gazebo/models
 
-*On this folder each model has its own folder with at least two files on it. They probably must follow the 
+*On this folder each model has its own folder with at least two files on it. They probably must follow the
 naming schematic as bellow:
     - my_model/
             - model.config
@@ -42,7 +42,7 @@ naming schematic as bellow:
     Those names may be more relevant when they are passed down to the structures on the *mavlink plugin*, that  makes the connection
     between the .sdf model and the "inner model" on px4.
 
-    MUST add this once I figure it out** 
+    MUST add this once I figure it out**
 
   "
 
@@ -67,6 +67,7 @@ The command to build and run the simulation on sitl_gazebo with a specific model
 
     $ make px4_sitl gazebo_my_model
 
+^^^^NOTE: if any change was made, you need to run "make clean" and then run the command above
 Where you replace 'my_model' with the name you declare on the model files on the privious step.
 
 *To make this work with your model as well, you must add your model name as a build target on the file:
@@ -92,4 +93,4 @@ Source of this information:
     https://discuss.px4.io/t/troubles-adding-new-model-for-simulation-in-gazebo/10949
 
 
-## 3 
+## 3

@@ -1,7 +1,7 @@
 <sdf version='1.5'>
 
   <model name='rotor_module'>
-    <pose>0 0 0.1 0 0 0</pose>
+    <pose>0 0 0.2 0 0 0</pose>
 
     <link name='base_link'>
       <pose>0 0 0 0 0 0</pose>
@@ -108,7 +108,7 @@
         <geometry>
           <cylinder>
             <length>0.25</length>
-            <radius>0.15</radius>
+            <radius>0.2</radius>
           </cylinder>
         </geometry>
         <surface>
